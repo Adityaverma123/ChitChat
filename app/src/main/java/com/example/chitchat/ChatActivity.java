@@ -10,8 +10,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,11 +26,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ChatActivity extends AppCompatActivity {
     DatabaseReference ref;
     EditText message;
     ImageButton imageButton;
     RecyclerView recyclerView;
+    TextView profile_username;
+    CircleImageView profile_image;
     MessageAdapter.UserAdapter messageAdapter;
     List<Chat> mChats;
 
@@ -42,12 +49,16 @@ public class ChatActivity extends AppCompatActivity {
         imageButton=findViewById(R.id.btn_send);
         recyclerView=findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
+        profile_image=findViewById(R.id.profile_image);
+        profile_username=findViewById(R.id.profile_username);
+        Toolbar toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         mChats=new ArrayList<>();
         messageAdapter=new MessageAdapter.UserAdapter(mChats,getApplicationContext());
-
         recyclerView.setAdapter(messageAdapter);
         readMessage(FirebaseAuth.getInstance().getCurrentUser().getUid(),userid);
         ref= FirebaseDatabase.getInstance().getReference().child("users").child(userid);
@@ -56,7 +67,16 @@ public class ChatActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                     PostHolder holder=dataSnapshot.getValue(PostHolder.class);
-                    setTitle(holder.getName());
+                    profile_username.setText(holder.getName());
+                    if(holder.getImageurl().equals("default"))
+                    {
+                        profile_image.setImageResource(R.mipmap.ic_launcher);
+                    }
+                    else
+                    {
+                        Glide.with(ChatActivity.this).load(holder.getImageurl()).into(profile_image);
+                    }
+
                 }
 
 
@@ -111,6 +131,8 @@ public class ChatActivity extends AppCompatActivity {
 
                     }
                     messageAdapter.notifyDataSetChanged();
+                    messageAdapter.notifyItemInserted(mChats.size());
+                    recyclerView.smoothScrollToPosition(mChats.size());
                 }
 
 

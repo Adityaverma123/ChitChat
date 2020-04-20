@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
         button=findViewById(R.id.signinButton);
         username=findViewById(R.id.register_username);
         textView=findViewById(R.id.gotoLogin);
@@ -94,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                                         map.put("email",email.getText().toString());
                                         map.put("name",username.getText().toString());
                                         map.put("id",mAuth.getCurrentUser().getUid());
+                                        map.put("imageurl","default");
                                         FirebaseDatabase.getInstance().getReference().child("users").child(task.getResult().getUser().getUid()).updateChildren(map);
                                         //Add on database
                                         loadingbar.dismiss();

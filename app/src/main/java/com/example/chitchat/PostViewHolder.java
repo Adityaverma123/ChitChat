@@ -13,19 +13,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class PostViewHolder extends RecyclerView.ViewHolder {
     TextView getName;
     LinearLayout linearLayout;
+    CircleImageView imageView;
 
     public PostViewHolder(@NonNull View itemView) {
         super(itemView);
         getName = itemView.findViewById(R.id.getName);
         linearLayout = itemView.findViewById(R.id.linearLayout);
+        imageView=itemView.findViewById(R.id.profile_image);
     }
     public static class UserAdapter extends RecyclerView.Adapter<PostViewHolder>
     {
         private List<PostHolder>mUsers;
         private Context context;
+
         public UserAdapter(List<PostHolder>mUsers,Context context)
         {
             this.mUsers=mUsers;
