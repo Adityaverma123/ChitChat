@@ -16,9 +16,13 @@
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             app:popupTheme="@style/MenuStyle">
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/profile_image"></de.hdodenhof.circleimageview.CircleImageView>
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/profile_image"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+            </de.hdodenhof.circleimageview.CircleImageView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -26,6 +30,7 @@
                 android:id="@+id/profile_username"
                 android:textColor="@android:color/white"
                 android:fontFamily="serif"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_marginStart="25dp"></TextView>
         </androidx.appcompat.widget.Toolbar>

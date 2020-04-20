@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -23,8 +25,9 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     public PostViewHolder(@NonNull View itemView) {
         super(itemView);
         getName = itemView.findViewById(R.id.getName);
+
         linearLayout = itemView.findViewById(R.id.linearLayout);
-        imageView=itemView.findViewById(R.id.profile_image);
+        imageView=itemView.findViewById(R.id.toolbar_image);
     }
     public static class UserAdapter extends RecyclerView.Adapter<PostViewHolder>
     {
@@ -48,6 +51,14 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         public void onBindViewHolder(@NonNull final PostViewHolder holder, int position) {
            final PostHolder holder1=mUsers.get(position);
             holder.getName.setText(holder1.getName());
+            if(holder1.getImageurl().equals("default"))
+            {
+                holder.imageView.setImageResource(R.mipmap.ic_launcher);
+            }
+            else
+            {
+                Glide.with(context).load(holder1.getImageurl()).into(holder.imageView);
+            }
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
