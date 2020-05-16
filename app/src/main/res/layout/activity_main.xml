@@ -28,62 +28,14 @@
         android:text="Welcome to ChitChat. Just click on the Button below and you are ready to rock with your friends"
 
         android:textSize="19dp"></TextView>
-
-    <EditText
-        android:id="@+id/register_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TextView"
-        android:layout_marginLeft="20dp"
-
-        android:layout_marginTop="180dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/input_design"
-        android:fontFamily="serif"
-        android:hint="Enter Email"
-        android:inputType="textWebEmailAddress"
-        android:padding="10dp"
-        android:textColor="@color/colorPrimaryDark"></EditText>
-
-    <EditText
-        android:id="@+id/register_username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/register_email"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/input_design"
-        android:fontFamily="serif"
-        android:hint="Enter Username"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textColor="@color/colorPrimaryDark"></EditText>
-
-    <EditText
-        android:id="@+id/register_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/register_username"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/input_design"
-        android:fontFamily="serif"
-        android:hint="Enter Password"
-        android:inputType="textPassword"
-        android:padding="10dp"
-        android:textColor="@color/colorPrimaryDark"></EditText>
-
-
     <Button
         android:id="@+id/signinButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/register_password"
+       android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginRight="100dp"
         android:background="@drawable/button"
         android:fontFamily="serif"
@@ -92,15 +44,58 @@
         android:textColor="@android:color/white"
         android:textSize="17dp"
         android:onClick="onClick"></Button>
+    <EditText
+        android:id="@+id/register_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/signinButton"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/input_design"
+        android:fontFamily="serif"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColor="@color/colorPrimaryDark"></EditText>
+    <EditText
+        android:id="@+id/register_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/register_password"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/input_design"
+        android:fontFamily="serif"
+        android:hint="Enter Username"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="@color/colorPrimaryDark"></EditText>
+    <EditText
+        android:id="@+id/register_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/register_username"
+        android:layout_marginLeft="20dp"
+
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/input_design"
+        android:fontFamily="serif"
+        android:hint="Enter Email"
+        android:inputType="textWebEmailAddress"
+        android:padding="10dp"
+        android:textColor="@color/colorPrimaryDark"></EditText>
 
     <TextView
         android:id="@+id/gotoLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="22dp"
+        android:layout_alignParentRight="true"
         android:layout_marginBottom="29dp"
+        android:layout_marginRight="20dp"
         android:text="Or, Login"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
